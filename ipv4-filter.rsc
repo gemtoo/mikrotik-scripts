@@ -35,18 +35,6 @@ add action=add-dst-to-address-list address-list=Blacklisted_IPs \
     "Add non-LAN bruteforcers to blacklist for 1 day" content=\
     "invalid user name or password" protocol=tcp src-address-list=!LANs \
     src-port=8291
-/ip firewall nat
-add action=masquerade chain=srcnat comment="WAN masquerade rule." \
-    dst-address-list=!LANs out-interface-list=WAN_interface_list \
-    src-address-list=LANs
-add action=masquerade chain=srcnat comment="VPN masquerade rule." \
-    out-interface-list=VPN_interface_list
-add action=redirect chain=dstnat comment=\
-    "Redirect all DNS queries to this MikroTik router." dst-port=53 \
-    in-interface-list=LAN_interface_list protocol=udp
-add action=redirect chain=dstnat comment=\
-    "Redirect all NTP queries to this MikroTik router." dst-port=123 \
-    in-interface-list=LAN_interface_list protocol=udp
 /ip firewall service-port
 set ftp disabled=yes
 set tftp disabled=yes

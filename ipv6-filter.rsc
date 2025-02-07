@@ -63,10 +63,10 @@ add action=add-dst-to-address-list address-list=Blacklisted_IPs \
     src-port=8291
 /ipv6 firewall nat
 add action=redirect chain=dstnat comment=\
-    "Redirect all DNS queries to this MikroTik router." dst-port=53 \
+    "Redirect all DNS queries to this MikroTik router" dst-port=53 \
     in-interface-list=LAN_interface_list protocol=udp
 add action=redirect chain=dstnat comment=\
-    "Redirect all NTP queries to this MikroTik router." dst-port=123 \
+    "Redirect all NTP queries to this MikroTik router" dst-port=123 \
     in-interface-list=LAN_interface_list protocol=udp
 /ipv6 nd
 set [ find default=yes ] ra-interval=10s-30s ra-lifetime=1m
