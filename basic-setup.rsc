@@ -14,3 +14,5 @@ set use-ip-firewall=yes use-ip-firewall-for-pppoe=yes \
     use-ip-firewall-for-vlan=yes
 /ipv6 settings
 set accept-router-advertisements=no
+/system scheduler add name=Scheduler_firmware_upgrade on-event="/system routerboard\r\
+    \n:if ( [get current-firmware] != [get upgrade-firmware]) do={ /system routerboard upgrade; /system reboot }" policy=ftp,reboot,read,write,policy,test,password,sniff,sensitive,romon start-time=startup
